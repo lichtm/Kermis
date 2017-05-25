@@ -1,27 +1,17 @@
 package nl.kadaster.kermis;
 
+import java.util.Scanner;
 import java.util.ArrayList;
 
-class Attractie {
+public abstract class Attractie {
+
 	String name;
-	int sumTicketsSold;
-	double revenues = 0;
-	double sumRevenues;
-	
-	void kiestUMaar (){
-		System.out.println("ik zit in Attractie");
+	double priceTicket;
+	int ticketsSold;
+	double revenues;
+	static int sumTicketsSold;
+	static double sumRevenues;
 		
-//		BotsAuto botsAuto = new BotsAuto();
-//		botsAuto.botsen();
-//		Spin spin = new Spin();
-//		spin.spinnen();
-//		SpiegelPaleis spiegelPaleis = new SpiegelPaleis();
-//		spiegelPaleis.lachen();
-//		SpookHuis spookhuis = new SpookHuis();
-//		spookhuis.griezelen();
-//		Hawaii hawaii = new Hawaii();
-//		hawaii.surven();
-//		LadderKlimmen ladderKlimmen = new LadderKlimmen();
-//		ladderKlimmen.klouteren();
-	}
+	public abstract void omzet();
+	public abstract void kaartVerkoop();
 }
