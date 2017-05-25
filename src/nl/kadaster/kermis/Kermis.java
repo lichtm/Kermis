@@ -8,70 +8,67 @@ public class Kermis {
 	public static void main (String args[]){
 		Scanner sc = new Scanner(System.in);
 		String invoer;
+		int menuNr =1;
 
-		Attractie botsA = new BotsAuto();
+		Attractie botsAuto = new BotsAuto();
 		Attractie spin = new Spin();
-		Attractie spiegelP = new SpiegelPaleis();
-		Attractie spookH = new SpookHuis();
+		Attractie spiegelPaleis = new SpiegelPaleis();
+		Attractie spookHuis = new SpookHuis();
 		Attractie hawaii = new Hawaii();
-		Attractie ladderK = new LadderKlimmen();
-
-		System.out.println("Welkom bij de Kermis 'de rode superbal Kermis'.");
-		System.out.println("");
-		System.out.println("Wij hebben de volgende attracties voor U:");
-		System.out.println("***************************************************************************************");
-		System.out.println("***************************************************************************************");
-		System.out.println("**   Attractie       \t\t kosten      \t Attractie       \t kosten      **");
-		System.out.println("** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - **");
-		System.out.println("**   1. "+"Botsauto\'s" +"   \t\t € 2.50      \t 4. Spookhuis    \t € 3.20      **");
-		System.out.println("**   2. Spin         \t\t € 2.25      \t 5. Hawaii       \t € 2.90      **");
-		System.out.println("**   3. Spiegelpaleis\t\t € 2.75      \t 6. Ladderklimmen\t € 5.00      **");
-		System.out.println("**                   \t\t             \t                 \t             **");
-		System.out.println("** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - **");
-		System.out.println("**   K. Kaartverkoop \t\t O. omzet   \t xxx. Naar Uitgang (stop programma)  **");
-		System.out.println("***************************************************************************************");
-		System.out.println("***************************************************************************************");
-
+		Attractie ladderKlimmen = new LadderKlimmen();
 
 		ArrayList<Attractie> attrArray = new ArrayList<>();
-		attrArray.add(botsA);
+		attrArray.add(botsAuto);
 		attrArray.add(spin);
-		attrArray.add(spiegelP);
-		attrArray.add(spookH);
+		attrArray.add(spiegelPaleis);
+		attrArray.add(spookHuis);
 		attrArray.add(hawaii);
-		attrArray.add(ladderK);
+		attrArray.add(ladderKlimmen);
 
+		System.out.println("Welkom bij Kermis 'de RODE SUPERBAL'.");
+		System.out.println("");
+		System.out.println("Wij hebben de volgende attracties voor U:");
+		System.out.println("***************************************************");
+		System.out.println("***************************************************");
+		System.out.println("**   Attractie                   kosten          **");
+		System.out.println("** - - - - - - - - - - - - - - - - - - - - - - - **");
+		for (Attractie naamKosten : attrArray){
+			System.out.print("**  " +menuNr++ +"  -  ");
+			naamKosten.naamKosten();
+		}
+		System.out.println("***************************************************");
+		System.out.println("**  k  -  Kaartverkoop                           **");
+		System.out.println("**  o  -  Omzet                                  **");
+		System.out.println("** xxx -  Naar Uitgang (stop programma)          **");
+		System.out.println("***************************************************");
+		System.out.println("***************************************************");
 
 		doKeuzemenu:
 			do {
-				System.out.println("\n"+"Maak een keuze uit bovenstaande menu: < 1, 2, 3, 4, 5, 6, K, O of xxx > ");
+				System.out.println("\n"+"Maak een keuze uit bovenstaande menu: < 1, 2, 3, 4, 5, 6, 'k', 'o' of 'xxx' > ");
 				invoer = sc.next();
 
 				switch(invoer){
 				case "1" : 
-					((BotsAuto)botsA).botsen();
+					((BotsAuto)botsAuto).botsen();
 					break;
 				case "2": 
 					((Spin)spin).spinnen();
 					break;
 				case "3": 
-					((SpiegelPaleis)spiegelP).lachen();
+					((SpiegelPaleis)spiegelPaleis).lachen();
 					break;
 				case "4": 
-					((SpookHuis)spookH).griezelen();
+					((SpookHuis)spookHuis).griezelen();
 					break;
 				case "5": 
 					((Hawaii)hawaii).surven();
 					break;
 				case "6": 
-					((LadderKlimmen)ladderK).klouteren();
+					((LadderKlimmen)ladderKlimmen).klouteren();
 					break;
-				case "xxx": 
-					System.out.println("\tBedankt voor Uw bezoek.");
-					System.out.println("\tTot een volgende keer.");
-					break doKeuzemenu;
 
-				case "K": 
+				case "k": 
 					System.out.println("Totaal aantal kaartjes per attractie:");
 					System.out.println("==================================================");
 					for (Attractie kaartVerkoop : attrArray){
@@ -80,24 +77,24 @@ public class Kermis {
 					System.out.println("==================================================");
 					System.out.println("totaal kaartjes attracties \t : " +Attractie.sumTicketsSold);
 					break;
-					
-				case "O": 
+
+				case "o": 
 					System.out.println("Totale omzet per attractie:");
-					System.out.println("========================================================");
+					System.out.println("==================================================================");
 					for (Attractie omzet : attrArray){
 						omzet.omzet();
 					}
-					System.out.println("========================================================");
-					System.out.println("totale omzet attracties \t : \t\t" +Attractie.sumRevenues);
+					System.out.println("==================================================================");
+					System.out.println("totale omzet attracties \t : \t\t      €  " +Attractie.sumRevenues);
 					break;
-					//			case "q": 
-					//				((BotsAuto)botsA).omzet();
-					//				
-					//			break;
-					//		
+
+				case "xxx": 
+					System.out.println("\tBedankt voor Uw bezoek.");
+					System.out.println("\tTot een volgende keer.");
+					break doKeuzemenu;
 				default : System.out.println("\tOnjuiste keuze. Probeer opnieuw.");
 				}
-			} while (invoer != "000");
+			} while (invoer != "xxx");
 
 	}
 
